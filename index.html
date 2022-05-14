@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/gh/foobar404/wave.js/dist/bundle.js"></script>
+    <style>
+      body {
+        background-color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas></canvas>
+    <audio controls>
+      <source src="./forest-lullaby-110624.mp3" />
+    </audio>
+  </body>
+  <script>
+    let canvas = document.querySelector("canvas");
+    let audio = document.querySelector("audio");
+
+    canvas.width = window.innerWidth * 0.8;
+    canvas.height = window.innerHeight * 0.8;
+
+    let wave = new Wave(audio, canvas);
+
+    /*
+    Wave, Cubes, Circles, Glob, Shine, Square, Arcs.
+    */
+    wave.addAnimation(
+      new wave.animations.Wave({
+        lineColor: "white",
+        lineWidth: 10,
+        fillColor: { gradient: ["#FF9A8B", "#FF7A88", "#FF99AC"] },
+        mirroredX: true,
+        count: 5,
+        rounded: true,
+        frequencyBand: "base",
+      })
+    );
+    wave.addAnimation(
+      new wave.animations.Cubes({
+        top: true,
+        count: 60,
+        cubeHeight: 10,
+        fillColor: "#FFFF00",
+        lineColor: "rgba(0,0,0,0)",
+        radius: 1,
+      })
+    );
+    wave.addAnimation(
+      new wave.animations.Circles({
+        lineColor: { gradient: ["#FF9A8B", "#FF7A88", "#FF99AC"], rotate: 90 },
+        lineWidth: 4,
+        diameter: 20,
+        count: 20,
+        frequencyBand: "base",
+      })
+    );
+    wave.addAnimation(
+      new wave.animations.Glob({
+        fillColor: { gradient: ["#FF9A8B", "#FF7A88", "#FF99AC"], rotate: 90 },
+        lineColor: "white",
+        glow: { strength: 15, color: "#FAD961" },
+        lineWidth: 10,
+        count: 45,
+      })
+    );
+    wave.addAnimation(
+      new wave.animations.Shine({
+        lineColor: "#FAD961",
+        glow: { strength: 15, color: "#FAD961" },
+        diameter: 300,
+        lineWidth: 10,
+      })
+    );
+    wave.addAnimation(
+      new wave.animations.Square({
+        lineColor: { gradient: ["#21D4FD", "#B721FF"] },
+      })
+    );
+    wave.addAnimation(
+      new wave.animations.Arcs({
+        lineWidth: 4,
+        lineColor: { gradient: ["#21D4FD", "#B721FF"] },
+        diameter: 500,
+        fillColor: { gradient: ["#21D4FD", "#21D4FD", "#B721FF"], rotate: 45 },
+      })
+    );
+  </script>
+</html>
